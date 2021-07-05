@@ -22,8 +22,14 @@
     <list default="true" id="1caf5e26-8657-4c00-95e2-1fe0459ddb03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/_global.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_global.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/_mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_mixins.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/_vars.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_vars.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/style.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625445461490</updated>
-      <workItem from="1625445462829" duration="9550000" />
+      <workItem from="1625445462829" duration="16083000" />
     </task>
     <servers />
   </component>
@@ -92,6 +98,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="2785" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625462803120">
+      <screen x="2160" y="30" width="1920" height="1050" />
+    </state>
+    <state x="2785" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.31.1440.929/2160.30.1920.1050@2160.30.1920.1050" timestamp="1625462803120" />
     <state x="2783" y="238" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1625453297983">
       <screen x="2160" y="30" width="1920" height="1050" />
     </state>

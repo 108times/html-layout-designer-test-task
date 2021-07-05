@@ -1,21 +1,21 @@
-const { src, dest, watch, parallel, series }  = require('gulp');
+const {src, dest, watch, parallel, series} = require('gulp');
 
-const requireDir = require('require-dir')
-const browserSync   = require('browser-sync').create();
-const del           = require('del');
+const requireDir = require('require-dir');
+const browserSync = require('browser-sync').create();
+const del = require('del');
 
-const {images, scripts, styles} = requireDir('./tasks')
+const {images, scripts, styles, ttf, fonts} = requireDir('./tasks');
 
 function browsersync() {
 	browserSync.init({
-		server : {
-			baseDir: 'src/'
-		}
+		server: {
+			baseDir: 'src/',
+		},
 	});
 }
 
 function cleanDist() {
-	return del('dist')
+	return del('dist');
 }
 
 function build() {
@@ -23,12 +23,12 @@ function build() {
 		'src/css/style.min.css',
 		'src/fonts/**/*',
 		'src/js/main.min.js',
-		'src/*.html'
-	], {base: 'src'})
-	.pipe(dest('dist'))
+		'src/*.html',
+	], {base: 'src'}).pipe(dest('dist'));
 }
 
 function watching() {
+	watch(['src/fonts/**/*.ttf'], series(ttf, fonts));
 	watch(['src/less/**/*.less'], styles);
 	watch(['src/js/**/*.js', '!src/js/main.min.js'], scripts);
 	watch(['src/css/*.css']).on('change', browserSync.reload);
@@ -42,9 +42,9 @@ exports.browsersync = browsersync;
 exports.scripts = scripts;
 exports.images = images;
 exports.cleanDist = cleanDist;
-
+exports.fonts = fonts
 
 exports.build = series(cleanDist, images, build);
-exports.default = parallel(styles ,scripts ,browsersync, watching);
+exports.default = parallel(styles, scripts, browsersync, watching);
 
 

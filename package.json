@@ -13,13 +13,21 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
+    "gulp-changed": "^4.0.3",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-less": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttftowoff2": "^1.0.1",
     "gulp-uglify-es": "^2.0.0",
     "less-plugin-autoprefix": "^2.0.0",
+    "normalize.css": "^8.0.1",
     "require-dir": "^1.2.0"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "fs": "^0.0.1-security"
   }
 }

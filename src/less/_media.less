@@ -1,0 +1,30 @@
+
+.media-tablet(@content) {
+  @media (min-width: @mediaWidthTablet[min]) and (max-width: @mediaWidthTablet[max]) {
+    @content();
+  }
+}
+
+.media-tablet-horizontal(@content) {
+  @media (min-width: @mediaWidthTabletHorizontal[min]) and (max-width: @mediaWidthTabletHorizontal[max]) {
+    @content();
+  }
+}
+
+.media-laptop(@content) {
+  @media (min-width: @mediaWidthLaptop[min]) and (max-width: @mediaWidthLaptop[max]){
+    @content();
+  }
+}
+
+.media-mobile(@content) {
+  @media (min-width:@mediaWidthMobile[min]) and (max-width: @mediaWidthMobile[max]){
+    @content();
+  }
+}
+
+.custom-media(@width, @content) {
+  @media (min-width:@width[min]) and (max-width:@width[max]) {
+    @content();
+  }
+}
