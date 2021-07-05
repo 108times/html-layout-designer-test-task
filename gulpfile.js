@@ -32,6 +32,7 @@ function watching() {
 	watch(['src/less/**/*.less'], styles);
 	watch(['src/js/**/*.js', '!src/js/main.min.js'], scripts);
 	watch(['src/css/*.css']).on('change', browserSync.reload);
+	watch(['src/js/*.js']).on('change', browserSync.reload);
 	watch(['src/*.html']).on('change', browserSync.reload);
 }
 
