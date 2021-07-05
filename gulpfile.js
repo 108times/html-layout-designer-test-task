@@ -1,7 +1,6 @@
 const { src, dest, watch, parallel, series }  = require('gulp');
 
 const requireDir = require('require-dir')
-const concat        = require('gulp-concat');
 const browserSync   = require('browser-sync').create();
 const del           = require('del');
 
@@ -30,8 +29,9 @@ function build() {
 }
 
 function watching() {
-	watch(['src/scss/**/*.scss'], styles);
+	watch(['src/less/**/*.less'], styles);
 	watch(['src/js/**/*.js', '!src/js/main.min.js'], scripts);
+	watch(['src/css/*.css']).on('change', browserSync.reload);
 	watch(['src/*.html']).on('change', browserSync.reload);
 }
 

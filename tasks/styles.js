@@ -26,7 +26,7 @@ module.exports = function style(cb) {
 	}))
 	.pipe(concat('style.min.css'))
 	.pipe(map.write())
-	.pipe(dest('./build/css/'))
+	.pipe(dest('./src/css/'))
 	.pipe(bs.stream())
 	cb()
 }
