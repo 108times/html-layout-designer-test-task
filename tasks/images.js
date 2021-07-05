@@ -2,7 +2,7 @@ const {src, dest} = require('gulp');
 const imagemin = require('gulp-imagemin');
 
 module.exports = function images() {
-	return src('app/images/**/*').pipe(imagemin(
+	return src('src/images/**/*').pipe(imagemin(
 		[
 			imagemin.gifsicle({interlaced: true}),
 			imagemin.mozjpeg({quality: 75, progressive: true}),
@@ -14,5 +14,5 @@ module.exports = function images() {
 				],
 			}),
 		],
-	)).pipe(dest('dist/images'));
+	)).pipe(dest('build/images'));
 };

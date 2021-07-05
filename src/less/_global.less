@@ -1,15 +1,59 @@
+:root {
+
+}
+
 html,
 body {
 	height: 100%;
 }
 
-.container{
-  max-width: @content-width;
-  margin: 0 auto;
-  padding: 0 15px;
+body {
+  font-family: 'Roboto-Regular',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
 
+::-webkit-scrollbar {
+  width:16px;
+  height: 120px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 25px;
+  border: 6px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@columns: 12;
+@grid-width: @content-width;
+
+.grid(@columns, @i: 1) when (@i <= @columns) {
+  .col-@{i} {
+    width: @i * (100%/@columns);
+
+    flex: 1
+  }
+
+  .grid(@columns, @i + 1)
+}
 
 
+.container{
+  max-width: @content-width;
+  margin: 0 auto;
 
+}
+
+.row {
+  .display-flex(@flex-wrap: wrap);
+  margin-left: -1rem;
+  margin-right:-1rem
+}
+.grid(@columns: @columns);

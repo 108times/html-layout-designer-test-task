@@ -14,7 +14,7 @@ module.exports = function fonts(done) {
 				fontName = fontName[0]
 				// if (currentFontName !== fontName) {
 					if (fontExt == 'woff' || fontExt =='woff2') {
-						fs.appendFile(srcFonts, `@include font-face("${fontName}", "${fontName}", 400);\r\n`, () =>{})
+						fs.appendFile(srcFonts, `.font-face("${fontName}", "${fontName}", 400);\r\n`, () =>{})
 					}
 				// 	console.log(`@include font-face("${fontName}", "${fontName}", 400);\r\n`)
 				// }

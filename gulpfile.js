@@ -24,7 +24,7 @@ function build() {
 		'src/fonts/**/*',
 		'src/js/main.min.js',
 		'src/*.html',
-	], {base: 'src'}).pipe(dest('dist'));
+	], {base: 'src'}).pipe(dest('build'));
 }
 
 function watching() {

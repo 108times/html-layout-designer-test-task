@@ -1,0 +1,270 @@
+.menu {
+
+  width: @element-width;
+
+  .display-flex(@justify-content: space-between);
+
+  &__item {
+
+    color: #435993;
+    &.active {
+      color: #1c1c1c;
+    }
+  }
+
+  &__link {
+    line-height: 1.1rem;
+    font-size: 14px;
+    color: inherit;
+    font-weight: 100;
+  }
+
+  &__body {
+
+  }
+}
+
+
+.section {
+
+}
+
+
+
+.form-control {
+  width: 520px ;
+  position: relative;
+  font-weight: 200;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+  border:1px solid #e5e5e5;
+  text-align: center;
+  border-radius: @border-radius-element;
+  height: 60px;
+
+  &[data-placeholder]:focus,
+  &.has-value {
+    padding: .9rem 0 .4rem;
+  }
+
+  &:focus {
+    outline: none ;
+    border-color: @color-primary;
+  }
+}
+
+.floating-placeholder {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  z-index: 5;
+  font-size: 24px;
+  color:#c8c8c8;
+  pointer-events: none;
+  .transition(all, 200ms);
+  &.focus{
+    transform:scale(.6) translateY(-50%);
+  }
+}
+
+
+
+.birthyear-select {
+  position: relative;
+  width: 320px;
+  z-index: 10;
+  background: white;
+  &__input{
+    z-index: 5;
+    cursor: default;
+  }
+  &__input:focus {
+    border-color: #e5e5e5;
+  }
+  & label {
+    z-index: 10;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right:20.5px;
+    z-index: 21;
+    &-rotated {
+      transform: rotate(180deg);
+    }
+  }
+  &__list {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 120%;
+    background: #fff;
+    width: 100%;
+    z-index: 18;
+    transition: @transition-default;
+    box-shadow: 0 0 8px 2px rgba(0,0,0,.1);
+    padding: 33px 0 0 13px;
+    max-height: 300px;
+    overflow-y: scroll;
+    border-radius: @border-radius-element;
+
+    &-item {
+      color:@color-primary;
+      display: block;
+      text-align: center;
+      padding: 0;
+      padding-bottom: 12.5px;
+      cursor: pointer;
+      font-family: 'Roboto-Light', sans-serif;
+      font-size: 20px;
+    }
+
+    &.shown {
+      opacity: 1;
+      visibility: visible;
+      top: 100%;
+    }
+  }
+
+}
+
+
+
+.custom-checkbox {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  .display-flex();
+  display: inline-flex;
+  border-radius: @border-radius-small;
+  box-shadow: 0 0 0 1px  @color-primary;
+  flex: 1;
+  &:hover {
+    background: @color-secondary;
+    &__inidcator {
+      opacity: 0;
+    }
+  }
+  &--checked {
+    background: @color-primary;
+    &:hover {
+      background: @color-primary;
+    }
+  }
+
+  &__indicator {
+    position: relative;
+    opacity: 0;
+    pointer-events: none;
+    top: 1px;
+    margin-left: 2px;
+    display: block;
+    transform: scale(1.1);
+    &--visible {
+      opacity: 1;
+    }
+  }
+  &__label {
+    padding-left: 14px;
+    font-family: 'Roboto-Light', sans-serif;
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+    line-height: 1rem;
+  }
+}
+
+
+
+.range {
+  position: relative;
+  .display-flex(column);
+  //overflow: hidden;
+  &__labels {
+    position: relative;
+    width: 100%;
+    .display-flex(row, @justify-content: space-between, @align-items: flex-end);
+  }
+  &__label {
+    max-width: 185px;
+    font-size: 13px;
+    font-family: 'Roboto-Light', sans-serif;
+    font-weight: 400;
+    padding-right: 20px;
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    .display-flex(@justify-content: flex-start, @align-items: flex-end);
+
+  }
+
+  &__body {
+    .display-flex(column);
+    .position-relative-width-100;
+    margin-top: 18px;
+  }
+  &__gradient {
+    position: relative;
+    background: @range-gradient;
+    max-width: 738px;
+    height: 20px;
+  }
+  &__scale {
+    .position-relative-width-100;
+    &-top, &-bottom {
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    &-top {
+      //width: 0;
+      //height: 0;
+      //border: 0;
+      //border-bottom: 739px solid #e8e8e8;
+      //border-right: 11px solid transparent ;
+      //transform: rotate(-90deg) translateX(373px) translateY(363px);
+      position: relative;
+      width: @content-width;
+      height: 11px;
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      top: -11px;
+      left: 0;
+      background: #e8e8e8;
+      position: absolute;
+      &-gradient {
+        z-index: 10;
+        top: 0;
+        left: 0;
+        position: absolute;
+        //transform: rotate(-90deg) translateX(-373px) translateY(-363px);
+      }
+    }
+    &-bottom {
+      height: 3px;
+      width: 100%;
+      position: relative;
+      background: #e8e8e8;
+    }
+  }
+  &__control {
+    position: absolute;
+    margin-left: -10px;
+    top: 0;
+    pointer-events: none;
+    &-container {
+      height: 60px;
+      .position-relative-width-100;
+    }
+  }
+
+}

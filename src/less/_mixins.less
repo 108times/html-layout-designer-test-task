@@ -11,3 +11,22 @@
   }
 }
 
+.display-flex(@direction: row, @justify-content: center, @align-items: center, @flex-wrap:wrap) {
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @justify-content;
+  align-items: @align-items;
+  flex-wrap: @flex-wrap;
+}
+
+.transition(@property: all, @duration:200ms, @timing-function:ease-in-out, @delay: 0s) {
+  transition-property: @property;
+  transition-duration: @duration;
+  transition-timing-function: @timing-function;
+  transition-delay: @delay;
+}
+
+.position-relative-width-100 {
+  position: relative;
+  width: 100%;
+}
