@@ -109,7 +109,7 @@
 .javascript {
   &__header {
     .display-flex('column');
-    margin-top: 125px;
+    margin-top: 126px;
   }
 
   &__icon {
@@ -134,7 +134,7 @@
 .about {
   &__header {
     .display-flex('column');
-    margin-top: 123px;
+    margin-top: 42px;
   }
 
   &__icon {
@@ -146,5 +146,31 @@
     font-weight: 400;
     font-size: 30px;
     margin-top: 25px
+  }
+  &__description {
+    font-family: 'Roboto-Light';
+    font-size: 16px;
+    max-width: @element-width;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  &__message {
+    margin-top:37px;
+    width:calc(@element-width + 17px);
+    padding:19px ;
+    margin-left: 3px;
+    border-radius: @border-radius-element;
+    border-color: #e7e7e7;
+    height: 180px;
+    &:focus {
+      border-color: @color-primary;
+      outline: none;
+    }
+    &::placeholder {
+      font-family: 'Roboto-Regular';
+      font-size: 20px;
+      color: #c8c8c8;
+      }
   }
 }
