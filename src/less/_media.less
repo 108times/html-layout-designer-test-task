@@ -28,3 +28,9 @@
     @content();
   }
 }
+
+.media-adaptive(@content) {
+  @media (min-width:@mediaWidthAdaptive[min]) and (max-width: @mediaWidthAdaptive[max]){
+    @content();
+  }
+}

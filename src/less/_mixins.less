@@ -20,10 +20,7 @@
 }
 
 .transition(@property: all, @duration:200ms, @timing-function:ease-in-out, @delay: 0s) {
-  transition-property: @property;
-  transition-duration: @duration;
-  transition-timing-function: @timing-function;
-  transition-delay: @delay;
+  transition: @arguments;
 }
 
 .position-relative-width-100 {

@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			})();
 			const checkbox = document.createElement('span');
 			checkbox.classList.add('custom-checkbox');
-
+			checkbox.setAttribute('tabIndex', '0')
+			//
 			const indicator = document.createElement('img');
 			indicator.src = 'images/svg/checked.svg';
 			indicator.alt = '';
@@ -153,6 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		const onePercent = target / 100;
 		return (target - (target - val)) / onePercent;
 	};
+
+	// javascript section range
 	const delay = (fn, ms) => {
 		return function() {
 			if (Date.now() < delay.nextPossibleCallDate) {
@@ -163,11 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 	};
+
 	const getFromPercentages = (percentages, target) => {
 		return target / 100 * percentages;
 	};
 
-	getDashesAmount = (point, points) => {
+	const getDashesAmount = (point, points) => {
 		point = Number(point)
 		const v = points.get(point)
 		if (v) {
@@ -377,4 +381,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	};
 	handleJSLevelRange();
+
+
+	// menu
+	// const handleMenu = () => {
+	// 	const menu = document.querySelector('[data-menu]')
+	// 	const menuItems = document.querySelectorAll('.menu__item')
+	// 	const menuLinks = menu.querySelectorAll('.menu__link')
+	// 	let containers = []
+	// 	menuLinks.forEach(link => {
+	// 		const href = link.getAttribute('href')
+	// 		containers.push(document.querySelector( href))
+	//
+	// 		link.addEventListener('click', (e) => {
+	// 			e.preventDefault()
+	// 			containers.forEach(item => item.classList.remove('active'))
+	// 			menuItems.forEach(item => item.classList.remove('active'))
+	// 			link.closest('.menu__item').classList.add('active')
+	// 			document.querySelector( href).classList.add('active')
+	// 		})
+	//
+	// 	})
+	// }
+	// handleMenu()
+
+
+	//mobile menu
+	const handleMenuMobile = () => {
+		const hamburger = document.querySelector('.menu-hamburger')
+		const h_top = hamburger.firstElementChild
+		const h_bottom = h_top.nextElementSibling
+
+		const menu = document.querySelector('.menu__list')
+		const menuItems = document.querySelectorAll('.menu__item')
+		const menuLinks = menu.querySelectorAll('.menu__link')
+
+		const hamburgerTurnList = () => {
+			hamburger.classList.remove('x')
+			h_top.classList.add('collapse')
+			h_bottom.classList.add('collapse')
+			h_top.classList.remove('rotate')
+			h_bottom.classList.remove('rotate')
+			setTimeout(() => {
+				h_top.classList.remove('collapse')
+				h_bottom.classList.remove('collapse')
+			}, 200)
+		}
+
+		const hamburgerTurnX = () => {
+			hamburger.classList.add('x')
+			h_top.classList.add('collapse')
+			h_bottom.classList.add('collapse')
+			setTimeout(() => {
+				h_top.classList.add('rotate')
+				h_bottom.classList.add('rotate')
+				h_top.classList.remove('collapse')
+				h_bottom.classList.remove('collapse')
+			}, 200)
+
+		}
+
+		const showMenu = () => {
+			hamburgerTurnX()
+			setTimeout(() => menu.classList.add('menu__list--visible'), 200)
+		}
+
+		const hideMenu = () => {
+			hamburgerTurnList()
+			setTimeout(() => menu.classList.remove('menu__list--visible'), 200)
+		}
+		hamburger.addEventListener('click', e => {
+			if (!menu.classList.contains('menu__list--visible')) {
+				return showMenu()
+			}
+			return hideMenu()
+		})
+
+		menuLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				menuItems.forEach(item => item.classList.remove('active'))
+				link.closest('.menu__item').classList.add('active')
+				hideMenu()
+			})
+		})
+	}
+	handleMenuMobile()
 });

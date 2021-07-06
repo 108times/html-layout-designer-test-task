@@ -1,11 +1,34 @@
 .menu {
 
-  width: @element-width;
 
+  &__list {
+  width: @element-width ;
   .display-flex(@justify-content: space-between);
 
-  &__item {
+    .media-adaptive({
+      & {
+        position: fixed;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        padding:5rem 5rem 12rem;
+        opacity: 0;
+        z-index: 50;
+        pointer-events: none;
+        transition: @transition-default;
+        &--visible {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    })
+  }
 
+  &__item {
+    line-height: 1;
     color: #435993;
     &.active {
       color: #1c1c1c;
@@ -13,7 +36,7 @@
   }
 
   &__link {
-    line-height: 1.1rem;
+    line-height: 1;
     font-size: 14px;
     color: inherit;
     font-weight: 100;
@@ -22,12 +45,70 @@
   &__body {
 
   }
+
+  &-hamburger {
+    display: none;
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 40px;
+    right: 40px;
+    z-index: 100;
+    background: white;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px, rgba(0, 0, 0, 0.1) 0px -5px 15px;
+    transition: @transition-default;
+    transition-delay:250ms ;
+    transform: translateY(0px);
+    &.x {
+      transform: translateY(5px);
+      box-shadow: none;
+    }
+
+    &__top-el, &__bottom-el {
+      position: absolute;
+      border-radius: 45px;
+      width: 40px;
+      height: 8px;
+      background: @color-primary;
+      right: 15px;
+      top: 15px;
+      box-shadow: none;
+      transition: @transition-default;
+      &.collapse {
+        top: 31px;
+      }
+      &.rotate {
+        top: 31px;
+      }
+    }
+    &__top-el {
+      top: 20px;
+      width: 25px;
+      &.collapse {
+        width: 40px;
+      }
+      &.rotate {
+        width: 40px;
+        transform: rotate(45deg);
+      }
+    }
+    &__bottom-el {
+      top: 40px;
+      &.rotate {
+        transform: rotate(-45deg);
+      }
+    }
+    .media-adaptive({
+      display: block;
+    })
+  }
+
+
 }
 
 
-.section {
 
-}
 
 
 
@@ -60,7 +141,7 @@
 
 .floating-placeholder {
   position: absolute;
-  top: 0;
+  top: 2px;
   height: 100%;
   width: 100%;
   text-align: center;
@@ -100,7 +181,7 @@
     right:20.5px;
     z-index: 21;
     &-rotated {
-      transform: rotate(180deg);
+      transform: rotateZ(180deg) translateY(50%);
     }
   }
   &__list {
@@ -149,14 +230,21 @@
   border-radius: @border-radius-small;
   box-shadow: 0 0 0 1px  @color-primary;
   flex: 1;
-  &:hover {
+  &:hover, &:focus {
+    outline: none;
     background: @color-secondary;
     &__inidcator {
       opacity: 0;
     }
   }
+  &:active {
+    background: @color-primary;
+  }
   &--checked {
     background: @color-primary;
+    &:focus {
+      background: @color-primary;
+    }
     &:hover {
       background: @color-primary;
     }
@@ -211,11 +299,11 @@
     }
     &-text {
       left: -1px;
-      top: 3px;
+      top: 2px;
       line-height: 1.37;
       font-size: 13px;
       font-family: 'Roboto-Light', sans-serif;
-      font-weight: 400;
+      font-weight: 500;
       padding-right: 10px;
       width: 100%;
       height: 100%;
@@ -253,7 +341,7 @@
       max-width: 190px;
     }
     &:nth-child(3) &-text {
-      font-size: 12.6px;
+      font-size: 12.4px;
       line-height: 1.5;
     }
     &:nth-child(3) &-orientation {
@@ -310,6 +398,7 @@
     &-top, &-bottom {
       overflow: hidden;
       z-index: 5;
+      width: @content-width;
     }
 
     &-top {
@@ -319,8 +408,7 @@
       //border-bottom: 739px solid #e8e8e8;
       //border-right: 11px solid transparent ;
       //transform: rotate(-90deg) translateX(373px) translateY(363px);
-      position: relative;
-      width: @content-width;
+
       height: 11px;
       clip-path: polygon(100% 0, 0% 100%, 100% 100%);
       top: -11px;
@@ -337,7 +425,6 @@
     }
     &-bottom {
       height: 3px;
-      width: 100%;
       position: relative;
       background: #e8e8e8;
     }
@@ -384,4 +471,24 @@
   color: #fff;
   line-height: 2.8;
   cursor: pointer;
+
+  &__text {
+    position: relative;
+    top:-2px;
+  }
 }
+
+//.section {
+//  transition: @transition-default;
+//  position: absolute;
+//  opacity: 0;
+//  pointer-events: none;
+//  right: -100%;
+//  &.active {
+//    right: 0;
+//    position: relative;
+//    opacity: 1;
+//    pointer-events: all;
+//
+//  }
+//}

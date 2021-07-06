@@ -12,9 +12,8 @@
 
 <div class="header">
     <div class="container">
-        <ul class="menu header__menu">
-            <li
-                    class="menu__item active"><a class="menu__link" href="#personal-info">Личная информация</a></li>
+        <ul class="menu header__menu" data-menu>
+            <li class="menu__item active"><a class="menu__link" href="#personal-info">Личная информация</a></li>
             <li class="menu__item"><a class="menu__link" href="#experience">Опыт</a></li>
             <li class="menu__item"><a class="menu__link" href="#javascript">JavaScript</a></li>
             <li class="menu__item"><a class="menu__link" href="#about">О себе</a></li>
@@ -22,14 +21,14 @@
     </div>
 </div>
 
-<div class="questionnaire">
+<div class="questionnaire" >
     <div class="container">
         <form action="" class="questionnaire__form">
             <h1 class="questionnaire__title">Анкета</h1>
 
             <div class="questionnaire__sections">
 
-                <div class="section personal-info active">
+                <div class="section personal-info active" id="personal-info">
                     <div class="personal-info__header">
                         <div class="personal-info__icon">
                             <img class="icon" src="images/svg/personal-info.svg" alt="personal-info-section-icon">
@@ -57,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="section experience">
+                <div class="section experience" id="experience">
                     <div class="experience__header">
                         <div class="experience__icon">
                             <img class="icon" src="images/svg/experience.svg" alt="experience-section-info-icon">
@@ -127,7 +126,7 @@
 
                     </div>
                 </div>
-                <div class="javascript">
+                <div class="section javascript" id="javascript">
                     <div class="javascript__header">
                         <div class="javascript__icon">
                             <img class="icon" src="images/svg/js.svg" alt="javascript-section-icon">
@@ -138,9 +137,10 @@
                         <div class="range javascript__range" data-range data-range-start="50">
                             <div class="range__points">
                                 <div class="range__point" data-point=0 data-text='Не владею'></div>
-                                <div class="range__point" data-point=25 data-text='Использую готовые решения'></div>
-                                <div class="range__point" data-point=50 data-text='Испоользую готовые решения и умею
-                                    переделывать'></div>
+                                <div class="range__point" data-point=24 data-text='Использую готовые решения'></div>
+                                <div class="range__point" data-point=50
+                                     data-text='Испоользую готовые решения и умею
+                                    и переделывать'></div>
                                 <div class="range__point" data-point=100 data-text='Пишу сложный JS с нуля'></div>
                             </div>
 
@@ -176,18 +176,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="about">
+                <div class="section about" id="about">
                     <div class="about__header">
                         <div class="about__icon">
-                            <img class="icon" src="" alt="about-section-icon">
+                            <img class="icon" src="images/svg/about.svg" alt="about-section-icon">
                         </div>
                         <h1 class="about__title">Расскажите о себе</h1>
                         <p class="about__description">Напишите несколько предложений, чем привлекла наша вакансия и что
                             вы
                             ожидаете от работы у нас.</p>
-                        <textarea class="about__message" name="" id="" cols="30" rows="10"></textarea>
+                        <textarea class="about__message" name="" id="" cols="30" rows="10"
+                                  placeholder="Понравилась тем, что..."></textarea>
                         <div class="buttons about__buttons">
-                            <button class="btn about__btn" type="submit">Готово</button>
+                            <button class="btn about__btn" type="submit"><span class="btn__text">Готово</span></button>
                         </div>
                     </div>
                 </div>
