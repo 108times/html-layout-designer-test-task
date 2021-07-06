@@ -20,56 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1caf5e26-8657-4c00-95e2-1fe0459ddb03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/css/style.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/Roboto-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/fonts/Roboto-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/fonts/Roboto-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/fonts/Roboto-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/fonts/Roboto-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/fonts/fonts/Roboto-Thin.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/about.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/checked.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/expand-list.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/experience.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/js-control.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/js.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/images/svg/personal-info.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/js/main.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/about.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/checked.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/expand-list.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/experience.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/js-control.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/js.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/personal-info.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/svg/js-control.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/svg/js-control.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/less/_components.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_components.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_fonts.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_fonts.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_global.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_global.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_local-fonts.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_local-fonts.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_mixins.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_reset.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_reset.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_sections.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_sections.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/_vars.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_vars.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/fonts.js" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/fonts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/images.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +60,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -122,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625445461490</updated>
-      <workItem from="1625445462829" duration="61729000" />
+      <workItem from="1625445462829" duration="68136000" />
     </task>
     <servers />
   </component>
@@ -153,9 +111,10 @@
       <screen x="2160" y="30" width="1920" height="1050" />
     </state>
     <state x="2783" y="238" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.31.1440.929/2160.30.1920.1050@2160.30.1920.1050" timestamp="1625453297983" />
-    <state x="2299" y="55" key="SettingsEditor" timestamp="1625452328099">
-      <screen x="2160" y="30" width="1920" height="1050" />
+    <state x="111" y="69" key="SettingsEditor" timestamp="1625543839278">
+      <screen x="0" y="31" width="1440" height="929" />
     </state>
+    <state x="111" y="69" key="SettingsEditor/0.31.1440.929/2160.30.1920.1050@0.31.1440.929" timestamp="1625543839278" />
     <state x="2299" y="55" key="SettingsEditor/0.31.1440.929/2160.30.1920.1050@2160.30.1920.1050" timestamp="1625452328099" />
     <state x="104" y="53" key="SettingsEditor/0.31.1440.929@0.31.1440.929" timestamp="1625445558120" />
     <state x="399" y="229" key="run.anything.popup" timestamp="1625502212953">

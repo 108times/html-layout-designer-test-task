@@ -2,11 +2,11 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #fff;
-        stroke: #b0b0b0;
-        stroke-linejoin: round;
-        stroke-width: 1px;
-        fill-rule: evenodd;
+      fill: #fff;
+      stroke: #b0b0b0;
+      stroke-linejoin: round;
+      stroke-width: 1px;
+      fill-rule: evenodd;
       }
     </style>
   </defs>

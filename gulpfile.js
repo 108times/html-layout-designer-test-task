@@ -4,7 +4,7 @@ const requireDir = require('require-dir');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 
-const {images, scripts, styles, ttf, fonts} = requireDir('./tasks');
+const {images, scripts, styles, ttf, fonts, ttf_prod} = requireDir('./tasks');
 
 function browsersync() {
 	browserSync.init({
@@ -44,7 +44,7 @@ exports.images = images;
 exports.cleanDist = cleanDist;
 exports.fonts = fonts
 
-exports.build = series(cleanDist, images, build);
+exports.build = series(cleanDist, images, ttf_prod, build);
 exports.default = parallel(styles, scripts, browsersync, watching);
 
 
