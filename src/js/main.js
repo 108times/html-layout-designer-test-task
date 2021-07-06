@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		return v;
 	};
 
+	const isMobile = () => document.body.offsetWidth < 768
+
 	const handleJSLevelRange = () => {
 
 		const points = new Map([
@@ -198,10 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		const rangeGradientsFills = document.querySelectorAll(
 			'.range__gradient-fill');
 		const initialValuePercentages = range.dataset.rangeStart;
-		const rangeWidth = range.offsetWidth;
+		const rangeWidth = range.querySelector('.range__scale-top').offsetWidth;
 
 		const createPoints = (pointsData) => {
 			const points = range.querySelectorAll('[data-point]');
+
 			points.forEach(point => {
 				let orientationAdditionClass = '';
 				let textAdditionClass = '';
@@ -209,7 +212,18 @@ document.addEventListener('DOMContentLoaded', () => {
 				let offsetLeft = getFromPercentages(point.dataset.point,
 					rangeWidth);
 				if (offsetLeft === rangeWidth) {
+					console.log(offsetLeft)
 					point.classList.add('range__point--right');
+					if (isMobile()) {
+						setTimeout(() => {
+							console.log(offsetLeft  - point.offsetWidth)
+							// point.style.right = "-" + (offsetLeft - point.offsetWidth * 2) + 'px'
+							point.style.right = 0
+							point.style.left = offsetLeft + 'px'
+							point.querySelector('.range__point-text ').style.cssText = 'position: absolute; left: -152px; top:-20px;width:180px;'
+						})
+					}
+
 					orientationAdditionClass = 'range__point-orientation--right';
 					textAdditionClass = 'range__point-text--right';
 					markerAdditionalClass = 'range__point-marker--right';
@@ -266,13 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		const changeValues = (e, el, step = 1, ms = 50, absaluteValue = null) => {
 			let v;
 			// if value is provided then just move to it
+
 			if (absaluteValue !== null) {
 				v = absaluteValue
 			} else {
 				const coords = el.getBoundingClientRect();
 				v = e.pageX - coords.x;
 			}
-
 			const goal = v;
 			const initial = rangeControl.style.left.replace('px', '');
 			const direction = goal > initial ? 'up' : 'down';
@@ -283,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (current === goal) {
 					clearTimeout(i);
 					mouseDownHandler.current = current;
+					touchStartHandler.current = current
 				} else {
 					i = setTimeout(handler, ms)
 				}
@@ -301,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		const moveToNearestPoint = (e, curr, points) => {
-
 			// push all offset values into array
 			const diffArray = [];
 			points.reduce((previous, current) => {
@@ -361,13 +375,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				});
 			};
+
+
 			range.addEventListener('mouseout', mouseOutHandler);
 			rangeControlContainer.addEventListener('mousemove',
 				mouseMoveHandler);
 			rangeControlContainer.addEventListener('mouseup', mouseUpHandler);
 		};
 
+		const touchEndHandler = function(e) {
+			moveToNearestPoint(e, touchStartHandler.current,
+				assignValuesAccordingToPercentages(removeUnusedElements(points).keys(),
+					rangeWidth));
+		}
+
+		const touchStartHandler = function(e) {
+			const offsetLeft = (e.changedTouches[0].pageX + range.scrollLeft)
+			changeValues(null, null, 1, 50, offsetLeft)
+
+		};
 		rangeControl.addEventListener('mousedown', mouseDownHandler);
+		range.addEventListener('touchmove', touchStartHandler);
+		range.addEventListener('touchstart', touchStartHandler);
+		range.addEventListener('touchend',touchEndHandler)
 
 		const setInititalPosition = () => {
 			const initialPosition = getFromPercentages(initialValuePercentages,

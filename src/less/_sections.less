@@ -47,6 +47,10 @@
     line-height: 1;
   }
 
+  .media-adaptive({
+    padding-top: 50px;
+  })
+
 }
 
 .personal-info {
@@ -67,10 +71,12 @@
 
   &__body {
     margin-top: 50px;
-    .display-flex(column)
+    .display-flex(column);
+
   }
 
   &__form-control {
+
     margin-bottom:  25px;//1.124rem;
     margin-right: -7px;
 
@@ -90,7 +96,12 @@
     font-family: 'Roboto-Light';
     font-weight: 400;
     font-size: 30px;
-    margin-top: 27px
+    margin-top: 27px;
+
+    .media-adaptive({
+      padding: 0 1rem;
+      text-align: center;
+    });
   }
 
   &__body {
@@ -115,6 +126,9 @@
   }
   &__col-3 {
     width: 170px;
+    .media-adaptive({
+      width: 280px;
+    });
   }
 
 }
@@ -131,17 +145,27 @@
   }
 
   &__title {
-    font-family: 'Roboto-Light';
+    font-family: 'Roboto-Light', sans-serif;
     font-weight: 400;
     font-size: 30px;
-    margin-top: 28px
+    margin-top: 28px;
+
+    .media-adaptive({
+      padding: 0 1rem;
+      text-align: center;
+    });
   }
 
   &__body {
     margin-top: 34px;
+    .media-adaptive({
+      max-width: 768px;
+    })
+  }
+  &__range {
+
 
   }
-  &__range {}
 }
 
 
@@ -149,6 +173,8 @@
   &__header {
     .display-flex('column');
     margin-top: 42px;
+    flex-wrap: nowrap;
+    max-width: 100%;
   }
 
   &__icon {
@@ -156,19 +182,25 @@
   }
 
   &__title {
-    font-family: 'Roboto-Light';
+    font-family: 'Roboto-Light', sans-serif;
     font-weight: 400;
     font-size: 30px;
-    margin-top: 27px
+    margin-top: 27px;
+    .media-adaptive({
+
+    })
   }
   &__description {
-    font-family: 'Roboto-Light';
+    font-family: 'Roboto-Light', sans-serif;
     font-size: 16px;
     font-weight: 400;
     max-width: @element-width;
     text-align: center;
     margin-top: 14px;
     line-height: 1.5;
+    .media-adaptive({
+      padding:0 1rem;
+    })
   }
   &__message {
     margin-top:38px;
@@ -179,7 +211,9 @@
     border: 1px solid;
     border-color: #e7e7e7;
     height: 180px;
-
+    .media-adaptive({
+      max-width: 90%;
+    });
     &:focus {
       border-color: @color-primary;
       outline: none !important;
