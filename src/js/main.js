@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-	const getRandomString = (length = 7) => {
-		return Math.random().toString(36).substring(length);
-	};
 	//	create floating placeholders
 	const handleFloatingPlaceholders = () => {
 		const createFloatingPlaceholder = (el) => {
@@ -16,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			placeholder.classList.add('floating-placeholder');
 			el.parentElement.prepend(placeholder);
 			el.placeholderEl = placeholder;
+
+			if (el.value !== '') {
+				placeholder.classList.add('focus');
+				el.classList.add('has-value');
+
+			}
 			el.addEventListener('focus', e => {
 				placeholder.classList.add('focus');
 			});
@@ -33,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 		const elementsWithPlaceholder = document.querySelectorAll(
 			'[data-placeholder]');
-		elementsWithPlaceholder.forEach(el => createFloatingPlaceholder(el));
+		[...elementsWithPlaceholder].forEach(
+			el => createFloatingPlaceholder(el));
 
 	};
 	handleFloatingPlaceholders();
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				input.placeholderEl.classList.add('focus');
 
 			};
-			ul.append(li);
+			ul.appendChild(li);
 		}
 		birthYearSelect.prepend(ul);
 
@@ -98,6 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// custom checkboxes
 	const handleCustomCheckboxes = () => {
+		const getRandomString = (length = 7) => {
+			return Math.random().toString(36).substring(length);
+		};
+
 		const createCustomCheckBox = (el) => {
 			const parent = el.parentElement;
 			el.hidden = 'hidden';
@@ -108,19 +115,26 @@ document.addEventListener('DOMContentLoaded', () => {
 			})();
 			const checkbox = document.createElement('span');
 			checkbox.classList.add('custom-checkbox');
-			checkbox.setAttribute('tabIndex', '0')
+			checkbox.setAttribute('tabIndex', '0');
+
 			//
 			const indicator = document.createElement('img');
 			indicator.src = 'images/svg/checked.svg';
 			indicator.alt = '';
 			indicator.classList.add('custom-checkbox__indicator');
 			checkbox.checked = false;
-			checkbox.append(indicator);
+			checkbox.appendChild(indicator);
 
 			const label = document.createElement('label');
 			label.setAttribute('for', id);
 			label.className = 'custom-checkbox__label';
 			label.textContent = el.dataset.label;
+
+			if (el.checked === true) {
+				checkbox.classList.add('custom-checkbox--checked');
+				indicator.classList.add(
+					'custom-checkbox__indicator--visible');
+			}
 
 			checkbox.addEventListener('click', () => {
 				const checked = checkbox.checked;
@@ -141,12 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			});
 
-			parent.append(checkbox);
-			parent.append(label);
+			parent.appendChild(checkbox);
+			parent.appendChild(label);
 		};
 
 		const elements = document.querySelectorAll('[data-custom-checkbox]');
-		elements.forEach(item => createCustomCheckBox(item));
+		[...elements].forEach(item => createCustomCheckBox(item));
 	};
 	handleCustomCheckboxes();
 
@@ -172,15 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const getDashesAmount = (point, points) => {
-		point = Number(point)
-		const v = points.get(point)
+		point = Number(point);
+		const v = points.get(point);
 		if (v) {
-			points.set(point, {...v, isUsed : true})
+			points.set(point, {...v, isUsed: true});
 		}
 		return v;
 	};
 
-	const isMobile = () => document.body.offsetWidth < 768
+	const isMobile = () => document.body.offsetWidth < 768;
 
 	const handleJSLevelRange = () => {
 
@@ -205,23 +219,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		const createPoints = (pointsData) => {
 			const points = range.querySelectorAll('[data-point]');
 
-			points.forEach(point => {
+			[...points].forEach(point => {
 				let orientationAdditionClass = '';
 				let textAdditionClass = '';
 				let markerAdditionalClass = '';
 				let offsetLeft = getFromPercentages(point.dataset.point,
 					rangeWidth);
 				if (offsetLeft === rangeWidth) {
-					console.log(offsetLeft)
+					console.log(offsetLeft);
 					point.classList.add('range__point--right');
 					if (isMobile()) {
 						setTimeout(() => {
-							console.log(offsetLeft  - point.offsetWidth)
+							console.log(offsetLeft - point.offsetWidth);
 							// point.style.right = "-" + (offsetLeft - point.offsetWidth * 2) + 'px'
-							point.style.right = 0
-							point.style.left = offsetLeft + 'px'
-							point.querySelector('.range__point-text ').style.cssText = 'position: absolute; left: -152px; top:-20px;width:180px;'
-						})
+							point.style.right = 0;
+							point.style.left = offsetLeft + 'px';
+							point.querySelector(
+								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; top:-20px;width:180px;';
+						});
 					}
 
 					orientationAdditionClass = 'range__point-orientation--right';
@@ -243,27 +258,27 @@ document.addEventListener('DOMContentLoaded', () => {
 				for (let i = 0; i < dashesAmount; i++) {
 					const dash = document.createElement('span');
 					dash.className = 'range__point-dash';
-					dashes.append(dash);
+					dashes.appendChild(dash);
 				}
-				orientation.append(dashes);
+				orientation.appendChild(dashes);
 
 				const marker = document.createElement('div');
 				marker.className = 'range__point-marker ' +
 					markerAdditionalClass;
 				marker.style.height = markerHeight + 'px';
-				orientation.append(marker);
+				orientation.appendChild(marker);
 
 				const text = document.createElement('p');
 				text.className = 'range__point-text ' + textAdditionClass;
 				text.textContent = point.dataset.text;
-				point.append(text);
-				point.append(orientation);
+				point.appendChild(text);
+				point.appendChild(orientation);
 			});
 		};
 		createPoints(points);
 
 		const setValues = (direction, v, step) => {
-			rangeGradientsFills.forEach(fill => {
+			[...rangeGradientsFills].forEach(fill => {
 				fill.style.width = rangeWidth - v + 'px';
 			});
 
@@ -277,12 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		};
 
-		const changeValues = (e, el, step = 1, ms = 50, absaluteValue = null) => {
+		const changeValues = (
+			e, el, step = 1, ms = 50, absaluteValue = null) => {
 			let v;
 			// if value is provided then just move to it
 
 			if (absaluteValue !== null) {
-				v = absaluteValue
+				v = absaluteValue;
 			} else {
 				const coords = el.getBoundingClientRect();
 				v = e.pageX - coords.x;
@@ -297,15 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (current === goal) {
 					clearTimeout(i);
 					mouseDownHandler.current = current;
-					touchStartHandler.current = current
+					touchStartHandler.current = current;
 				} else {
-					i = setTimeout(handler, ms)
+					i = setTimeout(handler, ms);
 				}
 
 			}, ms);
 
 		};
-
 
 		const isCloserToUpper = (curr, upperValue, lowerValue) => {
 			let lowerCount, higherCount;
@@ -319,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			// push all offset values into array
 			const diffArray = [];
 			points.reduce((previous, current) => {
-				let currentDifference =  current - curr;
+				let currentDifference = current - curr;
 				diffArray.push({
 					value: currentDifference,
 					absValue: Math.abs(currentDifference),
@@ -330,11 +345,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			// find min offset
 			let min;
-			diffArray.forEach(item => {
-				if ( min === undefined
-					|| item.absValue < min.absValue ) min = item;
+			[...diffArray].forEach(item => {
+				if (min === undefined
+					|| item.absValue < min.absValue) min = item;
 			});
-			setTimeout(() => changeValues(null, null, 1, 400, min.point),200)
+			setTimeout(() => changeValues(null, null, 1, 400, min.point), 200);
 		};
 
 		const assignValuesAccordingToPercentages = (arr, width) => {
@@ -342,12 +357,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 		const removeUnusedElements = (points) => {
 			for (const entry of points) {
-				if (entry[1].isUsed === undefined) {
-					points.delete(entry[0])
+				if (entry[ 1 ].isUsed === undefined) {
+					points.delete(entry[ 0 ]);
 				}
 			}
-			return points
-		}
+			return points;
+		};
 
 		const mouseDownHandler = function(e) {
 			const mouseMoveHandler = (e) => {
@@ -360,7 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					rangeControlContainer.removeEventListener('mouseup',
 						mouseUpHandler);
 					moveToNearestPoint(e, mouseDownHandler.current,
-						assignValuesAccordingToPercentages(removeUnusedElements(points).keys(),
+						assignValuesAccordingToPercentages(
+							removeUnusedElements(points).keys(),
 							rangeWidth));
 				});
 			};
@@ -376,7 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			};
 
-
 			range.addEventListener('mouseout', mouseOutHandler);
 			rangeControlContainer.addEventListener('mousemove',
 				mouseMoveHandler);
@@ -385,25 +400,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		const touchEndHandler = function(e) {
 			moveToNearestPoint(e, touchStartHandler.current,
-				assignValuesAccordingToPercentages(removeUnusedElements(points).keys(),
+				assignValuesAccordingToPercentages(
+					removeUnusedElements(points).keys(),
 					rangeWidth));
-		}
+		};
 
 		const touchStartHandler = function(e) {
-			const offsetLeft = (e.changedTouches[0].pageX + range.scrollLeft)
-			changeValues(null, null, 1, 50, offsetLeft)
+			const offsetLeft = (e.changedTouches[ 0 ].pageX + range.scrollLeft);
+			changeValues(null, null, 1, 50, offsetLeft);
 
 		};
 		rangeControl.addEventListener('mousedown', mouseDownHandler);
 		range.addEventListener('touchmove', touchStartHandler);
 		range.addEventListener('touchstart', touchStartHandler);
-		range.addEventListener('touchend',touchEndHandler)
+		range.addEventListener('touchend', touchEndHandler);
 
 		const setInititalPosition = () => {
 			const initialPosition = getFromPercentages(initialValuePercentages,
 				rangeWidth);
 			rangeControl.style.setProperty('left', initialPosition + 'px');
-			rangeGradientsFills.forEach(
+			[...rangeGradientsFills].forEach(
 				(item) => item.style.setProperty('width',
 					initialPosition + 'px'));
 		};
@@ -411,7 +427,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	};
 	handleJSLevelRange();
-
 
 	// menu
 	// const handleMenu = () => {
@@ -435,65 +450,64 @@ document.addEventListener('DOMContentLoaded', () => {
 	// }
 	// handleMenu()
 
-
 	//mobile menu
 	const handleMenuMobile = () => {
-		const hamburger = document.querySelector('.menu-hamburger')
-		const h_top = hamburger.firstElementChild
-		const h_bottom = h_top.nextElementSibling
+		const hamburger = document.querySelector('.menu-hamburger');
+		const h_top = hamburger.firstElementChild;
+		const h_bottom = h_top.nextElementSibling;
 
-		const menu = document.querySelector('.menu__list')
-		const menuItems = document.querySelectorAll('.menu__item')
-		const menuLinks = menu.querySelectorAll('.menu__link')
+		const menu = document.querySelector('.menu__list');
+		const menuItems = document.querySelectorAll('.menu__item');
+		const menuLinks = menu.querySelectorAll('.menu__link');
 
 		const hamburgerTurnList = () => {
-			hamburger.classList.remove('x')
-			h_top.classList.add('collapse')
-			h_bottom.classList.add('collapse')
-			h_top.classList.remove('rotate')
-			h_bottom.classList.remove('rotate')
+			hamburger.classList.remove('x');
+			h_top.classList.add('collapse');
+			h_bottom.classList.add('collapse');
+			h_top.classList.remove('rotate');
+			h_bottom.classList.remove('rotate');
 			setTimeout(() => {
-				h_top.classList.remove('collapse')
-				h_bottom.classList.remove('collapse')
-			}, 200)
-		}
+				h_top.classList.remove('collapse');
+				h_bottom.classList.remove('collapse');
+			}, 200);
+		};
 
 		const hamburgerTurnX = () => {
-			hamburger.classList.add('x')
-			h_top.classList.add('collapse')
-			h_bottom.classList.add('collapse')
+			hamburger.classList.add('x');
+			h_top.classList.add('collapse');
+			h_bottom.classList.add('collapse');
 			setTimeout(() => {
-				h_top.classList.add('rotate')
-				h_bottom.classList.add('rotate')
-				h_top.classList.remove('collapse')
-				h_bottom.classList.remove('collapse')
-			}, 200)
+				h_top.classList.add('rotate');
+				h_bottom.classList.add('rotate');
+				h_top.classList.remove('collapse');
+				h_bottom.classList.remove('collapse');
+			}, 200);
 
-		}
+		};
 
 		const showMenu = () => {
-			hamburgerTurnX()
-			setTimeout(() => menu.classList.add('menu__list--visible'), 200)
-		}
+			hamburgerTurnX();
+			setTimeout(() => menu.classList.add('menu__list--visible'), 200);
+		};
 
 		const hideMenu = () => {
-			hamburgerTurnList()
-			setTimeout(() => menu.classList.remove('menu__list--visible'), 200)
-		}
+			hamburgerTurnList();
+			setTimeout(() => menu.classList.remove('menu__list--visible'), 200);
+		};
 		hamburger.addEventListener('click', e => {
 			if (!menu.classList.contains('menu__list--visible')) {
-				return showMenu()
+				return showMenu();
 			}
-			return hideMenu()
-		})
+			return hideMenu();
+		});
 
-		menuLinks.forEach(link => {
+		Array.from(menuLinks).forEach(link => {
 			link.addEventListener('click', () => {
-				menuItems.forEach(item => item.classList.remove('active'))
-				link.closest('.menu__item').classList.add('active')
-				hideMenu()
-			})
-		})
-	}
-	handleMenuMobile()
+				menuItems.forEach(item => item.classList.remove('active'));
+				link.closest('.menu__item').classList.add('active');
+				hideMenu();
+			});
+		});
+	};
+	handleMenuMobile();
 });
