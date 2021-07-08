@@ -11,17 +11,19 @@ const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = function scripts() {
 	return src([
+		'node_modules/babel-polyfill/dist/polyfill.js',
 		'src/js/main.js',
 	]).
+		pipe(concat('main.js')).
 		pipe(sourcemaps.init()).
+		pipe(uglify({mangle: true})).
 		pipe(babel({
-			"presets": [
-				[ "@babel/preset-env"]
+			presets: [
+				'@babel/preset-env',
 			]
 		})).
-		pipe(uglify({mangle: true})).
 
-		pipe(terser({mangle: true})).
+		// pipe(terser({mangle: true})).
 		pipe(sourcemaps.write()).
 		pipe(rename({suffix: '.min'})).
 		pipe(dest('src/js'));

@@ -1,8 +1,12 @@
 .menu {
 
-
+  position: relative;
+  height: 80px;
   &__list {
-  width: @element-width ;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    width: @element-width ;
   .display-flex(@justify-content: space-between);
 
     .media-adaptive({
@@ -36,6 +40,10 @@
     &.active {
       color: #1c1c1c;
     }
+      &:nth-of-type(1) {
+        position: relative;
+        left: 1px;
+      }
   }
 
   &__link {
@@ -304,7 +312,7 @@
     position: absolute;
     max-width: 185px;
     z-index: 15;
-
+  top:0;
     &--right {
       right: -3px;
       text-align: right;

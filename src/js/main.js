@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			placeholder.for = el.name;
 			placeholder.textContent = text;
 			placeholder.classList.add('floating-placeholder');
-			el.parentElement.prepend(placeholder);
+			// el.parentElement.prepend(placeholder);
+			el.parentElement.insertBefore(placeholder, el.parentElement.childNodes[0]);
 			el.placeholderEl = placeholder;
 
 			if (el.value !== '') {
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		expandIcon.src = 'images/svg/expand-list.svg';
 		expandIcon.alt = 'expand-birthyear-list';
 		expandIcon.classList.add('birthyear-select__icon');
-		birthYearSelect.prepend(expandIcon);
+		birthYearSelect.insertBefore(expandIcon, birthYearSelect.childNodes[0]);
 
 		// get input
 		const input = birthYearSelect.querySelector('input');
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			};
 			ul.appendChild(li);
 		}
-		birthYearSelect.prepend(ul);
+		birthYearSelect.insertBefore(ul, birthYearSelect.childNodes[0]);
 
 		const openSelection = e => {
 			e.preventDefault();
@@ -181,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	};
 
+	const isIE11 = () => {
+		return !!window.MSInputMethodContext && !!document.documentMode;
+	}
+
 	const getFromPercentages = (percentages, target) => {
 		return target / 100 * percentages;
 	};
@@ -217,6 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		const rangeWidth = range.querySelector('.range__scale-top').offsetWidth;
 
 		const createPoints = (pointsData) => {
+			const pointsContainer = range.querySelector('.range__points')
+
+			if (isIE11()) {
+				pointsContainer.style['align-items'] = 'flex-start'
+			}
+
 			const points = range.querySelectorAll('[data-point]');
 
 			[...points].forEach(point => {
@@ -226,13 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				let offsetLeft = getFromPercentages(point.dataset.point,
 					rangeWidth);
 				if (offsetLeft === rangeWidth) {
-					console.log(offsetLeft);
+
 					point.classList.add('range__point--right');
 					if (isMobile()) {
+
 						setTimeout(() => {
-							console.log(offsetLeft - point.offsetWidth);
-							// point.style.right = "-" + (offsetLeft - point.offsetWidth * 2) + 'px'
-							point.style.right = 0;
+
+							point.style.right = '0';
 							point.style.left = offsetLeft + 'px';
 							point.querySelector(
 								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; top:-20px;width:180px;';
@@ -293,20 +304,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		const changeValues = (
-			e, el, step = 1, ms = 50, absaluteValue = null) => {
+			e, el, step = 1, ms = 50, absoluteValue = null) => {
 			let v;
 			// if value is provided then just move to it
 
-			if (absaluteValue !== null) {
-				v = absaluteValue;
+			if (absoluteValue !== null) {
+				v = absoluteValue;
 			} else {
 				const coords = el.getBoundingClientRect();
-				v = e.pageX - coords.x;
+				v = e.pageX - coords.left;
 			}
 			const goal = v;
 			const initial = rangeControl.style.left.replace('px', '');
 			const direction = goal > initial ? 'up' : 'down';
-
 			let i = setTimeout(function handler() {
 				setValues(direction, v, step);
 				const current = v;
@@ -365,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		const mouseDownHandler = function(e) {
+
 			const mouseMoveHandler = (e) => {
 				changeValues(e, rangeControlContainer);
 			};

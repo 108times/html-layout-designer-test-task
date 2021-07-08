@@ -44,6 +44,7 @@ exports.images = images;
 exports.cleanDist = cleanDist;
 exports.fonts = fonts
 
+
 exports.build = series(cleanDist, images, ttf_prod, build);
 exports.default = parallel(styles, scripts, browsersync, watching);
 
