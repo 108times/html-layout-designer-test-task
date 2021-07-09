@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.min.css">
+    <script src="js/libs.min.js"></script>
+</head>
+<body>
+<style>
+    .container{
+        margin: 100px auto;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .up,.bottom{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 10px;
+        width: 768px;
+        overflow: hidden;
+    }
+    .up {
+        z-index: 10;
+    }
+    .bottom {
+
+
+    }
+    .up canvas, .bottom canvas {
+        position: absolute;
+        top: 0;
+        width: 768px;
+    }
+    .fill {
+        position: absolute;
+        top: 6px;
+    background: linear-gradient(90deg, #ccb1f1, #435993);
+        width:768px;
+        height: 3px;
+    }
+    .fill.gray {
+        background: #e8e8e8;
+    }
+
+</style>
+
+<!--<img class="img" height="6" width="768" src="images/gradient.png" data-polyclip=" 100%, 0, 100%, 100%, 0%, 100%">-->
+
+<div class="container">
+    <div class="up">
+<!--        <div class="inner">-->
+            <img class="img" height="6" width="768" src="images/gradient.png" data-polyclip=" 100%, 0, 100%, 100%, 0%, 100%">
+            <div class="fill"></div>
+<!--        </div>-->
+    </div>
+
+    <div class="bottom">
+<!--        <div class="inner">-->
+        <img class="img" height="6" width="768" src="images/gray.png" data-polyclip=" 100%, 0, 100%, 100%, 0%, 100%">
+        <div class="fill gray"></div>
+<!--        </div>-->
+    </div>
+</div>
+</body>
+</html>

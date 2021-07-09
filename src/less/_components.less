@@ -7,7 +7,7 @@
     position: relative;
     height: 100%;
     width: @element-width ;
-  .display-flex(@justify-content: space-between);
+    .display-flex(@justify-content: space-between);
 
     .media-adaptive({
       & {
@@ -19,7 +19,7 @@
         height: 100%;
         background: white;
         padding:5rem 5rem 12rem;
-          opacity: 1;
+        opacity: 1;
         z-index: 50;
         pointer-events: none;
         .transition(@duration: 700ms);
@@ -40,10 +40,10 @@
     &.active {
       color: #1c1c1c;
     }
-      &:nth-of-type(1) {
-        position: relative;
-        left: 1px;
-      }
+    &:nth-of-type(1) {
+      position: relative;
+      left: 1px;
+    }
   }
 
   &__link {
@@ -295,8 +295,8 @@
 
 .range {
   position: relative;
+  width: 100%;
   .display-flex(column);
-  //overflow: hidden;
   &__points {
     position: relative;
     width: 100%;
@@ -312,11 +312,10 @@
     position: absolute;
     max-width: 185px;
     z-index: 15;
-  top:0;
     &--right {
       right: -3px;
       text-align: right;
-      ;
+    ;
     }
     &-text {
       left: -1px;
@@ -404,6 +403,7 @@
       left: 15px;
     });
   }
+
   &__gradient {
     position: relative;
     background: @range-gradient;
@@ -411,16 +411,19 @@
     height: 20px;
     width: 100%;
 
-      &-fill {
-        background: #e8e8e8;
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-      }
+    &-fill {
+      background: #e8e8e8;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
   }
   &__scale {
-    .position-relative-width-100;
+    width: 100%;
+    height: 3px;
+    position: relative;
+
     &-top, &-bottom {
       overflow: hidden;
       z-index: 5;
@@ -428,12 +431,6 @@
     }
 
     &-top {
-      //width: 0;
-      //height: 0;
-      //border: 0;
-      //border-bottom: 739px solid #e8e8e8;
-      //border-right: 11px solid transparent ;
-      //transform: rotate(-90deg) translateX(373px) translateY(363px);
 
       height: 11px;
       clip-path: polygon(100% 0, 0% 100%, 100% 100%);
@@ -441,6 +438,17 @@
       left: 0;
       background: #e8e8e8;
       position: absolute;
+
+
+
+      &__bottom {
+        height: 3px;
+        top: 6px;
+        width: 100%;
+        position: absolute;
+        background: @range-gradient;
+      }
+
       &-gradient {
         z-index: 10;
         top: 0;
@@ -449,11 +457,16 @@
         //transform: rotate(-90deg) translateX(-373px) translateY(-363px);
       }
     }
+
     &-bottom {
       height: 3px;
-      position: relative;
+      position: absolute;
       background: #e8e8e8;
+
+
+
     }
+
   }
   &__control {
     position: absolute;
@@ -461,17 +474,19 @@
     top: 5px;
     &-container {
       height: 60px;
-      .position-relative-width-100;
+      position: relative;
+      width: @content-width;
+      z-index: 20;
     }
 
     &-svg {
 
-        fill: #fff;
-        stroke: #b0b0b0;
-        stroke-linejoin: round;
-        stroke-width: 1px;
-        fill-rule: evenodd;
-        .transition();
+      fill: #fff;
+      stroke: #b0b0b0;
+      stroke-linejoin: round;
+      stroke-width: 1px;
+      fill-rule: evenodd;
+      .transition();
       &:hover {
         stroke: @color-primary
       }
@@ -483,9 +498,50 @@
     height: 18px;
   }
 
+
+
   .media-adaptive({
-    overflow-y: scroll;
+    overflow-y:hidden;
+    overflow-x: scroll;
   });
+}
+
+
+
+.polyfill {
+  width: @content-width;
+  &__upper, &__bottom {
+    position: absolute;
+    //top: -36px;
+    overflow:hidden;
+    left: 0;
+    top: -10px;
+    width: @content-width;
+    height: 20px;
+    z-index: 0;
+
+    & canvas {
+      position: absolute;
+    }
+  }
+
+  &__upper {
+    z-index: 10;
+  }
+
+  &__upper-bottom,&__bottom-bottom {
+    position: absolute;
+    height: 3px;
+    width: @content-width;
+    top: 11px;
+  }
+
+  &__upper-bottom {
+    background: @range-gradient;
+  }
+  &__bottom-bottom {
+    background: #e8e8e8;
+  }
 }
 
 

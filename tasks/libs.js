@@ -11,24 +11,25 @@ const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = function scripts() {
 	return src([
-		'node_modules/babel-polyfill/dist/polyfill.js',
-		'src/js/main.js',
+		'node_modules/jquery/dist/jquery.js',
+		'node_modules/clip-path-polyfill/clip-path-polyfill.js'
 	]).
-		pipe(concat('main.js')).
-		pipe(sourcemaps.init()).
-		pipe(uglify({mangle: true})).
-		pipe(babel({
-			presets: [
-				'@babel/preset-env',
-			]
-		})).
+		pipe(concat('libs.js')).
 
-		pipe(terser({mangle: true})).
+		pipe(sourcemaps.init()).
+
+		pipe(uglify({mangle: true})).
+		// pipe(babel({
+		// 	presets: [
+		// 		'@babel/preset-env',
+		// 	]
+		// })).
+		//
+		// pipe(terser({mangle: true})).
+
 		pipe(sourcemaps.write()).
+
 		pipe(rename({suffix: '.min'})).
 		pipe(dest('src/js'));
-	// pipe(concat('main.min.js')).
-	// pipe(uglify()).
-	// pipe(dest('src/js')).
 
 };

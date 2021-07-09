@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.14.7",
     "babel-polyfill": "^6.26.0",
     "browser-sync": "^2.26.13",
+    "clip-path-polyfill": "^1.0.0",
     "corejs": "^1.0.0",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
@@ -29,6 +30,7 @@
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttftowoff2": "^1.0.1",
     "gulp-uglify-es": "^2.0.0",
+    "jquery": "^3.6.0",
     "less-plugin-autoprefix": "^2.0.0",
     "normalize.css": "^8.0.1",
     "require-dir": "^1.2.0"
