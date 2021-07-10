@@ -10,9 +10,9 @@
 
 <body>
 
-<div class="header">
+<header class="header">
     <div class="container">
-        <div class="menu header__menu" data-menu>
+        <nav class="menu header__menu" data-menu>
             <ul class="menu__list">
                 <li class="menu__item active"><a class="menu__link" href="#personal-info">Личная информация</a></li>
                 <li class="menu__item"><a class="menu__link" href="#experience">Опыт</a></li>
@@ -23,18 +23,18 @@
                 <span class="menu-hamburger__top-el"></span>
                 <span class="menu-hamburger__bottom-el"></span>
             </div>
-        </div>
+        </nav>
     </div>
-</div>
+</header>
 
 <div class="questionnaire">
     <div class="container">
-        <form action="" class="questionnaire__form">
+        <form action="#" class="questionnaire__form">
             <h1 class="questionnaire__title">Анкета</h1>
 
             <div class="questionnaire__sections">
 
-                <div class="section personal-info active" id="personal-info">
+                <section class="section personal-info active" id="personal-info">
                     <div class="personal-info__header">
                         <div class="personal-info__icon">
                             <img class="icon" src="images/svg/personal-info.svg" alt="personal-info-section-icon">
@@ -66,9 +66,9 @@
                     <div hidden class="buttons personal-info__buttons">
                         <button class="btn personal-info__btn">Вперед</button>
                     </div>
-                </div>
+                </section>
 
-                <div class="section experience" id="experience">
+                <section class="section experience" id="experience">
                     <div class="experience__header">
                         <div class="experience__icon">
                             <img class="icon" src="images/svg/experience.svg" alt="experience-section-info-icon">
@@ -137,8 +137,8 @@
                         <button class="btn experience__btn">Вперед</button>
 
                     </div>
-                </div>
-                <div class="section javascript" id="javascript">
+                </section>
+                <section class="section javascript" id="javascript">
                     <div class="javascript__header">
                         <div class="javascript__icon">
                             <img class="icon" src="images/svg/js.svg" alt="javascript-section-icon">
@@ -188,23 +188,23 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="section about" id="about">
+                </section>
+                <section class="section about" id="about">
                     <div class="about__header">
                         <div class="about__icon">
                             <img class="icon" src="images/svg/about.svg" alt="about-section-icon">
                         </div>
-                        <h1 class="about__title">Расскажите о себе</h1>
+                        <h2 class="about__title">Расскажите о себе</h2>
                         <p class="about__description">Напишите несколько предложений, чем привлекла наша вакансия и что
                             вы
                             ожидаете от работы у нас.</p>
-                        <textarea class="about__message" name="" id="" cols="30" rows="10"
+                        <textarea class="about__message" name="message" id="message" cols="30" rows="10"
                                   placeholder="Понравилась тем, что...">Ваша вакансия привлекла меня тем, что мои навыки и опыт соответствуют таковым в требованиях вакансии. Обязанности, описанные в вакансии, соответствуют тому, на что я способен и чем мне нравится заниматься. Мне нравится ваша компания и работа, которую вы предлагаете. </textarea>
                         <div class="buttons about__buttons">
                             <button class="btn about__btn" type="submit"><span class="btn__text">Готово</span></button>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </form>
     </div>

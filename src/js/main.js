@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							point.style.left = offsetLeft + 2 + 'px';
 							point.style.top = '44px'
 							point.querySelector(
-								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; top:0px;width:180px;';
+								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; ;width:180px;' + (!isIE11() ? 'top:0px' : 'top:-20px')
 						});
 					}
 

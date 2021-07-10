@@ -27,21 +27,12 @@
       <change beforePath="$PROJECT_DIR$/build/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/css/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/main.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roboto-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roboto-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roboto-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roboto-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roboto-Thin.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/less/_components.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_components.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/less/_sections.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/_sections.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +90,8 @@
       <updated>1625445461490</updated>
       <workItem from="1625445462829" duration="119864000" />
       <workItem from="1625755074704" duration="13760000" />
-      <workItem from="1625812131217" duration="16197000" />
+      <workItem from="1625812131217" duration="18253000" />
+      <workItem from="1625917931031" duration="1593000" />
     </task>
     <servers />
   </component>
