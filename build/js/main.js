@@ -10,11 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	// function for changing range position
 	const isMobile = () => document.body.offsetWidth < 768;
 
-
-	if (isIE11()) {
+	if ( isIE11() ) {
 		const handler = () => {
 			const createFillPolyfill = options => {
-				const replacerTop = document.createElement('img');
+				const replacerTop     = document.createElement('img');
 				replacerTop.className = options.className;
 				replacerTop.setAttribute('src', options.src);
 				replacerTop.setAttribute('width', options.width);
@@ -27,90 +26,88 @@ document.addEventListener('DOMContentLoaded', () => {
 			};
 
 			const createBottomPart = options => {
-				const bottom = document.createElement('div');
+				const bottom     = document.createElement('div');
 				bottom.className = options.className;
 				options.container.appendChild(bottom);
 				return bottom;
 			};
 
-			const range = document.querySelector('.range__scale');
+			const range     = document.querySelector('.range__scale');
 			range.innerHTML = '';
 			range.classList.add('polyfill');
 
 			// const rangeTop = document.querySelector('.range__scale-top');
-			const rangeTop = document.createElement('div');
+			const rangeTop     = document.createElement('div');
 			rangeTop.className = 'polyfill__upper';
 
-			const rangeBottom = document.createElement('div');
+			const rangeBottom     = document.createElement('div');
 			rangeBottom.className = 'polyfill__bottom';
 
 			range.appendChild(rangeTop);
 			range.appendChild(rangeBottom);
 
 			const triangleGradient = createFillPolyfill({
-				src: 'images/gradient.png',
-				width: '768',
-				height: '11',
-				alt: '',
-				polyclip: '100%, 0, 100%, 100%, 0%, 100%',
-				className: 'plyfill__img',
-				container: rangeTop,
-			});
+															src:       'images/gradient.png',
+															width:     '768',
+															height:    '11',
+															alt:       '',
+															polyclip:  '100%, 0, 100%, 100%, 0%, 100%',
+															className: 'plyfill__img',
+															container: rangeTop,
+														});
 
 			const triangleGray = createFillPolyfill({
-				src: 'images/gray.png',
-				width: '768',
-				height: '11',
-				alt: '',
-				polyclip: '100%, 0, 100%, 100%, 0%, 100%',
-				className: 'polyfill__img',
-				container: rangeBottom,
-			});
+														src:       'images/gray.png',
+														width:     '768',
+														height:    '11',
+														alt:       '',
+														polyclip:  '100%, 0, 100%, 100%, 0%, 100%',
+														className: 'polyfill__img',
+														container: rangeBottom,
+													});
 
 			const bottomGradient = createBottomPart({
-				className: 'polyfill__upper-bottom',
-				container: rangeTop,
-			});
+														className: 'polyfill__upper-bottom',
+														container: rangeTop,
+													});
 
 			const bottomGray = createBottomPart({
-				className: 'polyfill__bottom-bottom',
-				container: rangeBottom,
-			});
+													className: 'polyfill__bottom-bottom',
+													container: rangeBottom,
+												});
 
-			const rangeControl = document.querySelector('.range__control')
-			setTimeout(() => rangeTop.style.maxWidth = document.querySelector('[data-range]').dataset.rangeStart + '%',1000)
+			const rangeControl = document.querySelector('.range__control');
+			setTimeout(() => rangeTop.style.maxWidth = document.querySelector('[data-range]').dataset.rangeStart + '%', 1000);
 
-			window.setValues = (direction, v, step) => {
-				rangeTop.style.maxWidth = v + 'px'
+			window.setValues = ( direction, v, step ) => {
+				if ( v < 0 || v > 768 ) return;
 
-				if (direction === 'up') {
+				rangeTop.style.maxWidth = v + 'px';
+
+				if ( direction === 'up' ) {
 					rangeControl.style.left = v + 'px';
 					v += step;
 
-				} else if (direction === 'down') {
+				} else if ( direction === 'down' ) {
 					rangeControl.style.left = v + 'px';
 					v -= step;
 				}
-			}
-			console.log(isMobile())
+			};
+			console.log(isMobile());
 
 			// if (isMobile()) {
 			// 	setTimeout(() => {
-			// 		const canvasList = document.querySelectorAll('.polyClip-clipped');
-			// 		console.log(canvasList);
-			// 		[...canvasList].forEach(canvas => {
-			// 			canvas.setAttribute('width', '768')
-			// 			console.log(canvas)
-			// 		})
-			// 	}, 50)
-			//
-			// }
+			// 		const canvasList =
+			// document.querySelectorAll('.polyClip-clipped');
+			// console.log(canvasList); [...canvasList].forEach(canvas => {
+			// canvas.setAttribute('width', '768') console.log(canvas) }) },
+			// 50)  }
 
 		};
 
 		const script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.src = 'js/libs.min.js';
+		script.type  = 'text/javascript';
+		script.src   = 'js/libs.min.js';
 		document.getElementsByTagName('head')[ 0 ].appendChild(script);
 		script.onload = () => {
 
@@ -121,21 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//	create floating placeholders
 	const handleFloatingPlaceholders = () => {
-		const createFloatingPlaceholder = (el) => {
+		const createFloatingPlaceholder = ( el ) => {
 
 			const text = el.dataset.placeholder;
-			if (text === undefined) return;
+			if ( text === undefined ) return;
 
-			const placeholder = document.createElement('label');
-			placeholder.for = el.name;
+			const placeholder       = document.createElement('label');
+			placeholder.for         = el.name;
 			placeholder.textContent = text;
 			placeholder.classList.add('floating-placeholder');
 			// el.parentElement.prepend(placeholder);
 			el.parentElement.insertBefore(placeholder,
-				el.parentElement.childNodes[ 0 ]);
+										  el.parentElement.childNodes[ 0 ]);
 			el.placeholderEl = placeholder;
 
-			if (el.value !== '') {
+			if ( el.value !== '' ) {
 				placeholder.classList.add('focus');
 				el.classList.add('has-value');
 
@@ -148,16 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
 				el.classList.remove('has-value');
 			};
 			el.addEventListener('blur', e => {
-				if (el.value === undefined || el.value === '') {
+				if ( el.value === undefined || el.value === '' ) {
 					onFloatingLabelBlur(e);
 				} else {
 					el.classList.add('has-value');
 				}
 			});
 		};
-		const elementsWithPlaceholder = document.querySelectorAll(
+		const elementsWithPlaceholder   = document.querySelectorAll(
 			'[data-placeholder]');
-		[...elementsWithPlaceholder].forEach(
+		[ ...elementsWithPlaceholder ].forEach(
 			el => createFloatingPlaceholder(el));
 
 	};
@@ -170,11 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// insert icon
 		const expandIcon = document.createElement('img');
-		expandIcon.src = 'images/svg/expand-list.svg';
-		expandIcon.alt = 'expand-birthyear-list';
+		expandIcon.src   = 'images/svg/expand-list.svg';
+		expandIcon.alt   = 'expand-birthyear-list';
 		expandIcon.classList.add('birthyear-select__icon');
 		birthYearSelect.insertBefore(expandIcon,
-			birthYearSelect.childNodes[ 0 ]);
+									 birthYearSelect.childNodes[ 0 ]);
 
 		// get input
 		const input = birthYearSelect.querySelector('input');
@@ -186,11 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		ul.classList.add('birthyear-select__list');
 		const min = birthYearSelect.dataset.yearStart || 1970;
 		const max = birthYearSelect.dataset.yearEnd || 2003;
-		for (let i = max; i >= min; i--) {
+		for ( let i = max; i >= min; i-- ) {
 			const li = document.createElement('li');
 			li.classList.add('birthyear-select__list-item');
 			li.textContent = i;
-			li.onclick = e => {
+			li.onclick     = e => {
 
 				input.value = i;
 				input.classList.add('has-value');
@@ -201,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		birthYearSelect.insertBefore(ul, birthYearSelect.childNodes[ 0 ]);
 
-		const openSelection = e => {
+		const openSelection  = e => {
 			e.preventDefault();
 			expandIcon.classList.add('birthyear-select__icon-rotated');
 			ul.classList.add('shown');
@@ -224,58 +221,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// custom checkboxes
 	const handleCustomCheckboxes = () => {
-		const getRandomString = (length = 7) => {
-			return Math.random().toString(36).substring(length);
+		const getRandomString = ( length = 7 ) => {
+			return Math.random()
+					   .toString(36)
+					   .substring(length);
 		};
 
-		const createCustomCheckBox = (el) => {
-			const parent = el.parentElement;
-			el.hidden = 'hidden';
-			const id = el.id || (() => {
+		const createCustomCheckBox = ( el ) => {
+			const parent   = el.parentElement;
+			el.hidden      = 'hidden';
+			const id       = el.id || ( () => {
 				const newId = getRandomString();
 				el.setAttribute('id', newId);
 				return newId;
-			})();
+			} )();
 			const checkbox = document.createElement('span');
 			checkbox.classList.add('custom-checkbox');
 			checkbox.setAttribute('tabIndex', '0');
 
 			//
 			const indicator = document.createElement('img');
-			indicator.src = 'images/svg/checked.svg';
-			indicator.alt = '';
+			indicator.src   = 'images/svg/checked.svg';
+			indicator.alt   = '';
 			indicator.classList.add('custom-checkbox__indicator');
 			checkbox.checked = false;
 			checkbox.appendChild(indicator);
 
 			const label = document.createElement('label');
 			label.setAttribute('for', id);
-			label.className = 'custom-checkbox__label';
+			label.className   = 'custom-checkbox__label';
 			label.textContent = el.dataset.label;
 
-			if (el.checked === true) {
+			if ( el.checked === true ) {
 				checkbox.classList.add('custom-checkbox--checked');
 				indicator.classList.add(
 					'custom-checkbox__indicator--visible');
 			}
 
-			checkbox.addEventListener('click', () => {
-				const checked = checkbox.checked;
-
-				if (!checked) {
+			const clickHandler = ( e ) => {
+				const checked = el.getAttribute('checked');
+				if ( checked === 'false' || checked === null ) {
 					checkbox.classList.add('custom-checkbox--checked');
 					indicator.classList.add(
 						'custom-checkbox__indicator--visible');
-					el.setAttribute('checked', true);
-				} else {
+					el.setAttribute('checked', 'true');
+				} else if ( checked === 'true' ) {
 					checkbox.classList.remove('custom-checkbox--checked');
 					indicator.classList.remove(
 						'custom-checkbox__indicator--visible');
-					el.setAttribute('checked', false);
+					el.setAttribute('checked', 'false');
 				}
+			};
+			el.addEventListener('click', ( e ) => {
+				clickHandler(e);
 
-				checkbox.checked = !checked;
+			});
 
+			checkbox.addEventListener('click', ( e ) => {
+				clickHandler(e);
 			});
 
 			parent.appendChild(checkbox);
@@ -283,20 +286,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		const elements = document.querySelectorAll('[data-custom-checkbox]');
-		[...elements].forEach(item => createCustomCheckBox(item));
+		[ ...elements ].forEach(item => createCustomCheckBox(item));
 	};
 	handleCustomCheckboxes();
 
 	// js range
 	const handleJSLevelRange = () => {
-		const getRelativePercentage = (val, target) => {
+		const getRelativePercentage = ( val, target ) => {
 			const onePercent = target / 100;
-			return (target - (target - val)) / onePercent;
+			return ( target - ( target - val ) ) / onePercent;
 		};
 		// javascript section range
-		const delay = (fn, ms) => {
+		const delay                 = ( fn, ms ) => {
 			return function() {
-				if (Date.now() < delay.nextPossibleCallDate) {
+				if ( Date.now() < delay.nextPossibleCallDate ) {
 					return;
 				}
 				fn(...arguments);
@@ -304,38 +307,55 @@ document.addEventListener('DOMContentLoaded', () => {
 			};
 
 		};
-		const getFromPercentages = (percentages, target) => {
+		const getFromPercentages    = ( percentages, target ) => {
 			return target / 100 * percentages;
 		};
-		const getDashesAmount = (point, points) => {
-			point = Number(point);
+		const getDashesAmount       = ( point, points ) => {
+			point   = Number(point);
 			const v = points.get(point);
-			if (v) {
-				points.set(point, {...v, isUsed: true});
+			if ( v ) {
+				points.set(point, { ...v, isUsed: true });
 			}
 			return v;
 		};
 
 		const setRangePosition = function(
-			e, el, step = 1, ms = 50, absoluteValue = null) {
+			e, el, step = 1, ms = 50, absoluteValue = null ) {
 			let v;
 			// if value is provided then just move to it
 
-			if (absoluteValue !== null) {
+			if ( absoluteValue !== null ) {
 				v = absoluteValue;
 			} else {
 				const coords = el.getBoundingClientRect();
-				v = e.pageX - coords.left;
+				v            = e.pageX - coords.left;
 			}
+
 			const goal = v;
-			const initial = rangeControl.style.left.replace('px', '');
+
+			if ( v < 0 || v > 768 ) {
+				return setTimeout(() => {
+					const direction = v < 0 ? 'down' : 'up';
+					const curr      = v;
+					const step      = 50;
+
+					window.setValues
+					? window.setValues(direction, curr, step)
+					: setValues(direction, curr, step);
+
+				});
+			}
+
+			const initial   = rangeControl.style.left.replace('px', '');
 			const direction = goal > initial ? 'up' : 'down';
-			let i = setTimeout(function handler() {
-				window.setValues ? window.setValues(direction, v, step) : setValues(direction, v, step);
+			let i           = setTimeout(function handler() {
+				window.setValues
+				? window.setValues(direction, v, step)
+				: setValues(direction, v, step);
 				const current = v;
-				if (current === goal) {
+				if ( current === goal ) {
 					clearTimeout(i);
-					mouseDownHandler.current = current;
+					mouseDownHandler.current  = current;
 					touchStartHandler.current = current;
 				} else {
 					i = setTimeout(handler, ms);
@@ -346,89 +366,139 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		const points = new Map([
-			[0, {dashes: 7, markerHeight: 0, ie11Top: 21}],
-			[24, {dashes: 6, markerHeight: 6, ie11Top: 7}],
-			[50, {dashes: 5, markerHeight: 9, ie11Top: 5}],
-			[75, {dashes: 4, markerHeight: 11, ie11Top: 5}],
-			[100, {dashes: 3, markerHeight: 14, ie11Top: 23}],
-		]);
+								   [
+									   0,
+									   {
+										   dashes:       7,
+										   markerHeight: 0,
+										   ie11Top:      21,
+									   },
+								   ],
+								   [
+									   24,
+									   {
+										   dashes:       6,
+										   markerHeight: 6,
+										   ie11Top:      7,
+									   },
+								   ],
+								   [
+									   50,
+									   {
+										   dashes:       5,
+										   markerHeight: 9,
+										   ie11Top:      5,
+									   },
+								   ],
+								   [
+									   75,
+									   {
+										   dashes:       4,
+										   markerHeight: 11,
+										   ie11Top:      5,
+									   },
+								   ],
+								   [
+									   100,
+									   {
+										   dashes:       3,
+										   markerHeight: 14,
+										   ie11Top:      23,
+									   },
+								   ],
+							   ]);
 
-		const range = document.querySelector('[data-range]');
-		const rangeControl = range.querySelector('.range__control');
-		const rangeControlContainer = range.querySelector(
+		const range                   = document.querySelector('[data-range]');
+		const rangeControl            = range.querySelector('.range__control');
+		const rangeControlContainer   = range.querySelector(
 			'.range__control-container');
-		const rangeGradients = document.querySelectorAll('.range__gradient');
-		const rangeGradientsFills = document.querySelectorAll(
+		const rangeGradients          = document.querySelectorAll('.range__gradient');
+		const rangeGradientsFills     = document.querySelectorAll(
 			'.range__gradient-fill');
 		const initialValuePercentages = range.dataset.rangeStart;
-		const rangeWidth = range.querySelector('.range__scale-top').offsetWidth;
+		const rangeWidth              = range.querySelector('.range__scale-top').offsetWidth;
 
-		const createPoints = (pointsData) => {
+		const createPoints = ( pointsData ) => {
 			const pointsContainer = range.querySelector('.range__points');
 
-			if (isIE11()) {
+			if ( isIE11() ) {
 				pointsContainer.style[ 'align-items' ] = 'flex-start';
 			}
 
 			const points = range.querySelectorAll('[data-point]');
 
-			[...points].forEach(point => {
+			[ ...points ].forEach(point => {
 				let orientationAdditionClass = '';
-				let textAdditionClass = '';
-				let markerAdditionalClass = '';
-				let offsetLeft = getFromPercentages(point.dataset.point,
-					rangeWidth);
-				if (offsetLeft === rangeWidth) {
+				let textAdditionClass        = '';
+				let markerAdditionalClass    = '';
+				let offsetLeft               = getFromPercentages(point.dataset.point,
+																  rangeWidth);
+				if ( offsetLeft === rangeWidth ) {
 
 					point.classList.add('range__point--right');
-					if (isMobile()) {
+					if ( isMobile() ) {
 
 						setTimeout(() => {
 
-							point.style.right = '0';
-							point.style.left = offsetLeft + 2 + 'px';
-							point.style.top = '44px'
+							point.style.right                        = '0';
+							point.style.left                         = offsetLeft + 2 + 'px';
+							point.style.top                          = '44px';
 							point.querySelector(
-								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; ;width:180px;' + (!isIE11() ? 'top:0px' : 'top:-20px')
+								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; ;width:180px;' + ( isIE11()
+																															 ? 'top:0px'
+																															 : 'top:-20px' );
 						});
+
 					}
 
+					window.addEventListener('resize', ( e ) => {
+						if ( document.documentElement.clientWidth < 768 ) {
+							point.style.right                        = '0';
+							point.style.left                         = offsetLeft + 2 + 'px';
+							point.style.top                          = '44px';
+							point.querySelector(
+								'.range__point-text ').style.cssText = 'position: absolute; left: -152px; ;width:180px;' + ( isIE11()
+																															 ? 'top:0px'
+																															 : 'top:-20px' );
+						}
+					});
+
 					orientationAdditionClass = 'range__point-orientation--right';
-					textAdditionClass = 'range__point-text--right';
-					markerAdditionalClass = 'range__point-marker--right';
+					textAdditionClass        = 'range__point-text--right';
+					markerAdditionalClass    = 'range__point-marker--right';
 				} else {
 					point.style.left = offsetLeft + 'px';
 				}
 
-				const orientation = document.createElement('div');
+				const orientation     = document.createElement('div');
 				orientation.className = 'range__point-orientation ' +
-					orientationAdditionClass;
+										orientationAdditionClass;
 
-				const {dashes: dashesAmount, markerHeight, ie11Top} = getDashesAmount(
+				const { dashes: dashesAmount, markerHeight, ie11Top } = getDashesAmount(
 					point.dataset.point, pointsData);
 
-				if (isIE11()) {
-					point.style.top = ie11Top + 'px'
+				if ( isIE11() ) {
+					point.style.top = ie11Top + 'px';
 				}
 
-				const dashes = document.createElement('div');
-				dashes.className = 'range__point-dashes';
+				const dashes        = document.createElement('div');
+				dashes.className    = 'range__point-dashes';
 				dashes.style.height = dashesAmount * 2 + 'px';
-				for (let i = 0; i < dashesAmount; i++) {
-					const dash = document.createElement('span');
+				for ( let i = 0; i < dashesAmount; i++ ) {
+					const dash     = document.createElement('span');
 					dash.className = 'range__point-dash';
 					dashes.appendChild(dash);
 				}
 				orientation.appendChild(dashes);
 
-				const marker = document.createElement('div');
-				marker.className = 'range__point-marker ' +
-					markerAdditionalClass;
+				const marker        = document.createElement('div');
+				marker.className    = 'range__point-marker ' +
+									  markerAdditionalClass;
 				marker.style.height = markerHeight + 'px';
 				orientation.appendChild(marker);
 
-				const text = document.createElement('p');
-				text.className = 'range__point-text ' + textAdditionClass;
+				const text       = document.createElement('p');
+				text.className   = 'range__point-text ' + textAdditionClass;
 				text.textContent = point.dataset.text;
 				point.appendChild(text);
 				point.appendChild(orientation);
@@ -436,108 +506,112 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 		createPoints(points);
 
-		const setValues = (direction, v, step) => {
-			console.log(v);
-			[...rangeGradientsFills].forEach(fill => {
+		const setValues = ( direction, v, step ) => {
+			[ ...rangeGradientsFills ].forEach(fill => {
 				fill.style.width = rangeWidth - v + 'px';
 			});
 
-			if (direction === 'up') {
+			if ( direction === 'up' ) {
 				rangeControl.style.left = v + 'px';
 				v += step;
 
-			} else if (direction === 'down') {
+			} else if ( direction === 'down' ) {
 				rangeControl.style.left = v + 'px';
 				v -= step;
 			}
 		};
 
-		const isCloserToUpper = (curr, upperValue, lowerValue) => {
+		const isCloserToUpper = ( curr, upperValue, lowerValue ) => {
 			let lowerCount, higherCount;
 			higherCount = lowerCount = 0;
-			for (let i = curr; i <= upperValue; i++, higherCount++) {}
-			for (let i = curr; i >= lowerValue; i--, lowerCount++) {}
+			for ( let i = curr; i <= upperValue; i++, higherCount++ ) {}
+			for ( let i = curr; i >= lowerValue; i--, lowerCount++ ) {}
 			return higherCount > lowerCount;
 		};
 
-		const moveToNearestPoint = (e, curr, points) => {
+		const moveToNearestPoint = ( e, curr, points ) => {
 			// push all offset values into array
 			const diffArray = [];
-			points.reduce((previous, current) => {
+			points.reduce(( previous, current ) => {
 				let currentDifference = current - curr;
 				diffArray.push({
-					value: currentDifference,
-					absValue: Math.abs(currentDifference),
-					point: current,
-				});
+								   value:    currentDifference,
+								   absValue: Math.abs(currentDifference),
+								   point:    current,
+							   });
 				return current;
 			}, points[ 0 ]);
 
 			// find min offset
 			let min;
-			[...diffArray].forEach(item => {
-				if (min === undefined
-					|| item.absValue < min.absValue) min = item;
+			[ ...diffArray ].forEach(item => {
+				if ( min === undefined
+					 || item.absValue < min.absValue ) {
+					min = item;
+				}
 			});
-			setTimeout(() => setRangePosition(null, null, 1, 400, min.point), 200);
+			setTimeout(() => setRangePosition(null, null, 1, 400, min.point));
 		};
 
-		const assignValuesAccordingToPercentages = (arr, width) => {
-			return [...arr].map(i => getFromPercentages(i, width));
+		const assignValuesAccordingToPercentages = ( arr, width ) => {
+			return [ ...arr ].map(i => getFromPercentages(i, width));
 		};
-		const removeUnusedElements = (points) => {
-			for (const entry of points) {
-				if (entry[ 1 ].isUsed === undefined) {
+		const removeUnusedElements               = ( points ) => {
+			for ( const entry of points ) {
+				if ( entry[ 1 ].isUsed === undefined ) {
 					points.delete(entry[ 0 ]);
 				}
 			}
 			return points;
 		};
 
-		const mouseDownHandler = function(e) {
+		const mouseDownHandler = function( e ) {
 
-			const mouseMoveHandler = (e) => {
+			const mouseMoveHandler = ( e ) => {
 				setRangePosition(e, rangeControlContainer);
 			};
-			const mouseUpHandler = (e) => {
+			const mouseUpHandler   = ( e ) => {
 				rangeControlContainer.removeEventListener('mousemove',
-					mouseMoveHandler);
+														  mouseMoveHandler);
 				setTimeout(() => {
 					rangeControlContainer.removeEventListener('mouseup',
-						mouseUpHandler);
+															  mouseUpHandler);
 					moveToNearestPoint(e, mouseDownHandler.current,
-						assignValuesAccordingToPercentages(
-							removeUnusedElements(points).keys(),
-							rangeWidth));
+									   assignValuesAccordingToPercentages(
+										   removeUnusedElements(points)
+											   .keys(),
+										   rangeWidth));
 				});
 			};
-
-			const mouseOutHandler = (e) => {
+			const mouseOutHandler  = ( e ) => {
 				setTimeout(() => {
-					if (e.target === range) {
+					if ( e.target === range ) {
 						rangeControlContainer.removeEventListener('mousemove',
-							mouseMoveHandler);
+																  mouseMoveHandler);
+						const v = mouseDownHandler.current;
 					}
-					// rangeControlContainer.removeEventListener('mouseup', mouseUpHandler);
+					// rangeControlContainer.removeEventListener('mouseup',
+					// mouseUpHandler);
 
 				});
 			};
 
-			range.addEventListener('mouseout', mouseOutHandler);
+			range.addEventListener('mouseleave', mouseOutHandler);
 			rangeControlContainer.addEventListener('mousemove',
-				mouseMoveHandler);
-			rangeControlContainer.addEventListener('mouseup', mouseUpHandler);
+												   mouseMoveHandler);
+			range.addEventListener('mouseup', mouseUpHandler);
 		};
 
-		const touchEndHandler = function(e) {
+		const touchEndHandler = function( e ) {
 			moveToNearestPoint(e, touchStartHandler.current,
-				assignValuesAccordingToPercentages(
-					removeUnusedElements(points).keys(),
-					rangeWidth));
+							   assignValuesAccordingToPercentages(
+								   removeUnusedElements(points)
+									   .keys(),
+								   rangeWidth));
 		};
 
-		const touchStartHandler = function(e) {
-			const offsetLeft = (e.changedTouches[ 0 ].pageX + range.scrollLeft);
+		const touchStartHandler = function( e ) {
+			const offsetLeft = ( e.changedTouches[ 0 ].pageX + range.scrollLeft );
 			setRangePosition(null, null, 1, 50, offsetLeft);
 
 		};
@@ -546,13 +620,50 @@ document.addEventListener('DOMContentLoaded', () => {
 		range.addEventListener('touchstart', touchStartHandler);
 		range.addEventListener('touchend', touchEndHandler);
 
+		const createBubble = ( offsetTop, offsetLeft ) => {
+			const bubble      = document.createElement('span');
+			bubble.className  = 'bubble born';
+			bubble.style.top  = offsetTop + 'px';
+			bubble.style.left = offsetLeft + 'px';
+			document.body.appendChild(bubble);
+			setTimeout(() => bubble.classList.remove('born'));
+			setTimeout(() => {
+
+				bubble.parentNode.removeChild(bubble);
+			}, 400);
+		};
+
+		range.addEventListener('click', ( e ) => {
+			e.stopPropagation();
+			if ( e.target !== range ) return;
+
+			const coords     = e.target.getBoundingClientRect();
+			const offsetLeft = ( e.pageX - coords.left ) + e.target.scrollLeft - ( isMobile()
+																				   ? 15
+																				   : 0 );
+			const x          = e.pageX;
+			const y          = e.pageY;
+
+			createBubble(y, x);
+			setRangePosition(null, null, 1, 50, offsetLeft);
+
+			setTimeout(() => {
+				moveToNearestPoint(e, offsetLeft,
+								   assignValuesAccordingToPercentages(
+									   removeUnusedElements(points)
+										   .keys(),
+									   rangeWidth));
+
+			});
+		});
+
 		const setInititalPosition = () => {
 			const initialPosition = getFromPercentages(initialValuePercentages,
-				rangeWidth);
+													   rangeWidth);
 			rangeControl.style.setProperty('left', initialPosition + 'px');
-			[...rangeGradientsFills].forEach(
-				(item) => item.style.setProperty('width',
-					initialPosition + 'px'));
+			[ ...rangeGradientsFills ].forEach(
+				( item ) => item.style.setProperty('width',
+												   initialPosition + 'px'));
 		};
 		setInititalPosition();
 
@@ -560,36 +671,36 @@ document.addEventListener('DOMContentLoaded', () => {
 	handleJSLevelRange();
 
 	/*
-	// menu
-	// const handleMenu = () => {
-	// 	const menu = document.querySelector('[data-menu]')
-	// 	const menuItems = document.querySelectorAll('.menu__item')
-	// 	const menuLinks = menu.querySelectorAll('.menu__link')
-	// 	let containers = []
-	// 	menuLinks.forEach(link => {
-	// 		const href = link.getAttribute('href')
-	// 		containers.push(document.querySelector( href))
-	//
-	// 		link.addEventListener('click', (e) => {
-	// 			e.preventDefault()
-	// 			containers.forEach(item => item.classList.remove('active'))
-	// 			menuItems.forEach(item => item.classList.remove('active'))
-	// 			link.closest('.menu__item').classList.add('active')
-	// 			document.querySelector( href).classList.add('active')
-	// 		})
-	//
-	// 	})
-	// }
-	// handleMenu()
-	*/
+	 // menu
+	 // const handleMenu = () => {
+	 // 	const menu = document.querySelector('[data-menu]')
+	 // 	const menuItems = document.querySelectorAll('.menu__item')
+	 // 	const menuLinks = menu.querySelectorAll('.menu__link')
+	 // 	let containers = []
+	 // 	menuLinks.forEach(link => {
+	 // 		const href = link.getAttribute('href')
+	 // 		containers.push(document.querySelector( href))
+	 //
+	 // 		link.addEventListener('click', (e) => {
+	 // 			e.preventDefault()
+	 // 			containers.forEach(item => item.classList.remove('active'))
+	 // 			menuItems.forEach(item => item.classList.remove('active'))
+	 // 			link.closest('.menu__item').classList.add('active')
+	 // 			document.querySelector( href).classList.add('active')
+	 // 		})
+	 //
+	 // 	})
+	 // }
+	 // handleMenu()
+	 */
 
 	//mobile menu
 	const handleMenuMobile = () => {
 		const hamburger = document.querySelector('.menu-hamburger');
-		const h_top = hamburger.firstElementChild;
-		const h_bottom = h_top.nextElementSibling;
+		const h_top     = hamburger.firstElementChild;
+		const h_bottom  = h_top.nextElementSibling;
 
-		const menu = document.querySelector('.menu__list');
+		const menu      = document.querySelector('.menu__list');
 		const menuItems = document.querySelectorAll('.menu__item');
 		const menuLinks = menu.querySelectorAll('.menu__link');
 
@@ -628,20 +739,44 @@ document.addEventListener('DOMContentLoaded', () => {
 			setTimeout(() => menu.classList.remove('menu__list--visible'), 200);
 		};
 		hamburger.addEventListener('click', e => {
-			if (!menu.classList.contains('menu__list--visible')) {
+			if ( !menu.classList.contains('menu__list--visible') ) {
 				return showMenu();
 			}
 			return hideMenu();
 		});
 
-		[...menuLinks].forEach(link => {
+		[ ...menuLinks ].forEach(link => {
 			link.addEventListener('click', () => {
 				hideMenu();
-				[...menuItems].forEach(item => item.classList.remove('active'));
+				[ ...menuItems ].forEach(item => item.classList.remove('active'));
 				link.parentNode.classList.add('active');
 
 			});
 		});
 	};
 	handleMenuMobile();
+
+	// effects
+	// const handleEffects = () => {
+	// 	setTimeout(() => {
+	// 		const createRipple = ( e ) => {
+	// 			const getRippleContainer = parentContainer => {
+	// 				return e.target.querySelector('.ripple-container') ?? (
+	// 					() => {
+	// 						const rippleContainer      =
+	// document.createElement('div'); ripple.container.className =
+	// 'ripple-container'; parentContainer.appendChild(rippleContainer); return
+	// rippleContainer; } )(); };  const rippleContainer =
+	// getRippleContainer(e.target); const ripple          =
+	// document.createElement('div'); ripple.className      = 'ripple born';
+	// rippleContainer.appendChild(ripple); setTimeout(() =>
+	// ripple.classList.remove('born')); setTimeout(() => ripple.remove(),
+	// 400); };  const toRippleChildren =
+	// document.querySelectorAll('[data-ripple-children]'); [
+	// ...toRippleChildren ].forEach(item => {  [ ...item.querySelectorAll('.'
+	// + item.dataset.rippleChildren) ].forEach(el => {
+	// el.addEventListener('click', e => { createRipple(e); });
+	// el.addEventListener('touch', e => createRipple(e)); }); }); }, 20);  };
+	// handleEffects();
+
 });

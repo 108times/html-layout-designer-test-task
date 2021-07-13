@@ -111,10 +111,19 @@
     width: 100%;
     margin-bottom: 10px;
     height: 25px;
+    .media-adaptive({
+      margin-bottom: 20px;
+      padding-left: 20px;
+
+    })
   }
   &__col-1, &__col-2, &__col-3 {
     flex:none;
     padding-top: 7px;
+
+    .media-adaptive({
+      padding-top: 0;
+    })
   }
   &__col-1, &__col-2 {
     width: 280px;
@@ -206,6 +215,7 @@
     border: 1px solid;
     border-color: #e7e7e7;
     height: 180px;
+    font-size: 20px;
     .media-adaptive({
       max-width: 90%;
     });
