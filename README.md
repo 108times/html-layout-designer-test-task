@@ -1,3 +1,3 @@
 # html-layout-designer-test-task
-test task for junior frontend position
+test task for frontend position
 pixel perfect
